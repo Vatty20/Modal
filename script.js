@@ -6,14 +6,19 @@ const btnCloseModal = document.querySelector('.close-modal');
 const btnsOpenModal = document.querySelectorAll('.show-modal');
 // console.log(btnsOpenModal);
 
-for (let i = 0; i < btnsOpenModal.length; i++)
-  btnsOpenModal[i].addEventListener('click', function () {
-    console.log('Button Clicked');
-    modal.classList.remove('hidden'); //. is not used with class name here
-    overlay.classList.remove('hidden');
-  });
+const openModal = function () {
+  //   console.log('Button Clicked');
+  modal.classList.remove('hidden'); //. is not used with class name here
+  overlay.classList.remove('hidden');
+};
 
-btnCloseModal.addEventListener('click', function () {
+const closeModal = function () {
   modal.classList.add('hidden');
   overlay.classList.add('hidden');
-});
+};
+
+for (let i = 0; i < btnsOpenModal.length; i++)
+  btnsOpenModal[i].addEventListener('click', openModal);
+
+btnCloseModal.addEventListener('click', closeModal);
+overlay.addEventListener('click', closeModal);
